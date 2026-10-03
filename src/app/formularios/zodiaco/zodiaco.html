@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zobaco</title>
+</head>
+<body>
+    <div>
+    <form>
+        <div class="form-group">
+            <br>
+            <p>Datos generales</p>
+            <br>
+            <label for="name">Tu nombre</label>
+            <br>
+            <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Ingresa tu nombre">
+            <br>
+            <br>
+            <label for="apaterno">Tu Apellido Paterno</label>
+            <br>
+            <input type="text" id="apaterno" name="apaterno" [(ngModel)]="apaterno" placeholder="Ingresa tu apellido paterno">
+            <br>
+            <br>
+            <label for="amaterno">Tu Apellido Materno</label>
+            <br>
+            <input type="text" id="amaterno" name="amaterno" [(ngModel)]="amaterno" placeholder="Ingresa tu apellido materno">
+            <br>
+            <br>
+            <br>
+            <p>Fecha de nacimiento</p>
+            <br>
+            <label for="dia">Dia</label>
+            <input type="text" id="dia" name="dia" [(ngModel)]="dia">
+            <br>
+            <label for="mes">Mes</label>
+            <input type="text" id="mes" name="mes" [(ngModel)]="mes">
+            <br>
+            <label for="anio">Año</label>
+            <input type="text" id="anio" name="anio" [(ngModel)]="anio">
+            <br>
+            <br>
+            <p>sexo</p>
+            <input type="radio" id="masculino" name="sexo" value="Masculino" [(ngModel)]="sexo">
+            <label for="masculino">Masculino</label>
+            <br>
+            <input type="radio" id="femenino" name="sexo" value="Femenino" [(ngModel)]="sexo">
+            <label for="femenino">Femenino</label>
+            <br>
+            <br>
+            <button type="button" (click)="imprimir()">imprimir</button>
+        </div>
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    <div *ngIf="mostrarResultado">
+        <p>Hola {{name}} {{apaterno}} {{amaterno}}</p>
+        <br>
+        <p>Tienes {{edad}} años</p>
+        <br>
+        <p>Tu signo zodiacal es </p>
+        <br>
+        <img [src]="imagenSigno" style=" height: 420px;">
+        <br>
+        <p>El {{signo}}</p>
+
+    </div>
+</div>
+</body>
+</html>
