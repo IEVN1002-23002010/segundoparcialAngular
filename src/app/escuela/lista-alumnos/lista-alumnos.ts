@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IAlumno } from '../alumnos';
+import { OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @Component({
   imports: [FormsModule, ReactiveFormsModule],
@@ -13,10 +15,10 @@ export class ListaAlumnos implements OnInit{
 
   alumnos:IAlumno[]=[]
   nuevoAlumno:IAlumno={
-    Matricula:'',
-    Nombre:'',
-    Correo:'',
-    Materia:''
+    Matricula:'xx',
+    Nombre:'xx',
+    Correo:'xx',
+    Materia:'xx',
 
   }
   ngOnInit(): void {
@@ -30,10 +32,17 @@ export class ListaAlumnos implements OnInit{
   }
 
 
+  muestraAlumnos():void{
+    this.nuevoAlumno.Nombre=this.formulario.value.Nombre
+    this.nuevoAlumno.Matricula=this.formulario.value.Matricula
+    this.nuevoAlumno.Correo=this.formulario.value.Correo
+    this.nuevoAlumno.Materia=this.formulario.value.Materia
+  }
+
   
 
 
-  cargaAlumno():void{
+  cargarAlumno():void{
 
   }
 }
