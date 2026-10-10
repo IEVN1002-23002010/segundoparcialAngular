@@ -1,0 +1,78 @@
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+ 
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+    Cinepolis
+  </h1>
+
+  <div *ngIf="mensajeError" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    {{ mensajeError }}
+  </div>
+ 
+  <form [formGroup]="Cinema">
+ 
+    <!-- Nombre -->
+    <div class="mb-5">
+      <label for="Nombre" class="block mb-2 text-sm font-medium text-gray-900">
+        Nombre
+      </label>
+      <input type="text" id="Nombre" name="Nombre" formControlName="Nombre" required
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+             placeholder="Nombre">
+    </div>
+ 
+    <!-- CantidadC -->
+    <div class="mb-5">
+      <label for="CantidadC" class="block mb-2 text-sm font-medium text-gray-900">
+        Cantidad de compradores
+      </label>
+      <input type="text" id="CantidadC" name="CantidadC" formControlName="CantidadC" required
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+             placeholder="CantidadC">
+    </div>
+
+    <!-- Tarjeta -->
+    <div class="mb-5">
+      <div class="flex items-center">
+        <input type="checkbox" id="Tarjeta" name="Tarjeta" formControlName="Tarjeta"
+               class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+        <label for="Tarjeta" class="ms-2 text-sm font-medium text-gray-900">
+          Cuentas con Tarjeta Cineco?
+        </label>
+      </div>
+    </div>
+
+    <!-- CantidadB -->
+    <div class="mb-5">
+      <label for="CantidadB" class="block mb-2 text-sm font-medium text-gray-900">
+        Cantidad de Boletos
+      </label>
+      <input type="text" id="CantidadB" name="CantidadB" formControlName="CantidadB" required
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+             placeholder="CantidadB">
+    </div>
+  
+    <!-- Botón -->
+    <div class="flex justify-end mt-5 space-x-4">
+      <button type="button"
+              class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5">
+        Salir
+      </button>
+
+      <button type="submit" (click)="procesarCompra()"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
+        Procesar
+      </button>
+    </div>
+ 
+  </form>
+ 
+  <div class="mt-8 p-4 bg-gray-50 border rounded-lg">
+    <h2 class="text-xl font-semibold mb-4">Salidas</h2>
+    <p><strong>Nombre:</strong> {{ nuevaCompra.Nombre }} </p>
+    <p><strong>Cantidad de Compradores:</strong> {{ nuevaCompra.CantidadC }} </p>
+    <p><strong>Tarjeta Cineco:</strong> {{ nuevaCompra.Tarjeta ? 'Sí' : 'No' }} </p>
+    <p><strong>Cantidad de Boletos:</strong> {{ nuevaCompra.CantidadB }} </p>
+    <p class="text-lg text-blue-700 font-bold mt-2"><strong>Valor a Pagar:</strong> {{ nuevaCompra.Total }} </p>
+  </div>
+
+</div>
