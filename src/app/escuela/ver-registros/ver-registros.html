@@ -1,0 +1,104 @@
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow">
+
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-900">Registros de Ventas Cinepolis</h1>
+    <button routerLink="/escuela/cinepolis"
+            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2">
+      Volver a Comprar
+    </button>
+  </div>
+
+
+
+
+
+  <div class="mb-8 p-6 bg-white border border-gray-300 rounded-2xl shadow-sm">
+    <h2 class="text-xl font-bold mb-4">
+      {{ indiceEdicion !== -1 ? 'Editar Compra' : 'Formulario de Edición' }}
+    </h2>
+
+    <div *ngIf="mensajeErrorModal" class="p-3 mb-3 text-xs text-red-800 bg-red-50 rounded-lg">
+      {{ mensajeErrorModal }}
+    </div>
+
+    <form [formGroup]="formEdicion">
+      <div class="mb-4">
+        <label class="block mb-1 text-sm font-medium text-gray-900">Nombre</label>
+        <input type="text" formControlName="Nombre" 
+               class="w-full p-2.5 text-sm border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1 text-sm font-medium text-gray-900">Cantidad Compradores</label>
+        <input type="number" formControlName="CantidadC" 
+               class="w-full p-2.5 text-sm border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500">
+      </div>
+
+      <div class="mb-4 flex items-center">
+        <input type="checkbox" formControlName="Tarjeta" id="tarjetaEdit" 
+               class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+        <label for="tarjetaEdit" class="ms-2 text-sm font-medium text-gray-900">¿Tiene Tarjeta Cineco?</label>
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1 text-sm font-medium text-gray-900">Cantidad Boletos</label>
+        <input type="number" formControlName="CantidadB" 
+               class="w-full p-2.5 text-sm border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500">
+      </div>
+
+      <div class="flex justify-end space-x-3 mt-4">
+        <button type="button" (click)="cerrarModal()"
+                class="px-5 py-2.5 text-sm font-medium bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-xl">
+          Cancelar / Limpiar
+        </button>
+        <button type="button" (click)="actualizarRegistro()"
+                class="px-5 py-2.5 text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-xl">
+          Guardar cambios
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+
+
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+        <tr>
+          <th scope="col" class="px-6 py-3">#</th>
+          <th scope="col" class="px-6 py-3">Nombre</th>
+          <th scope="col" class="px-6 py-3">Compradores</th>
+          <th scope="col" class="px-6 py-3">Boletos</th>
+          <th scope="col" class="px-6 py-3">Tarjeta Cineco</th>
+          <th scope="col" class="px-6 py-3">Total</th>
+          <th scope="col" class="px-6 py-3 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of compras; let i = index" class="bg-white border-b hover:bg-gray-50">
+          <td class="px-6 py-4 font-bold">{{ i + 1 }}</td>
+          <td class="px-6 py-4">{{ item.Nombre }}</td>
+          <td class="px-6 py-4">{{ item.CantidadC }}</td>
+          <td class="px-6 py-4">{{ item.CantidadB }}</td>
+          <td class="px-6 py-4">{{ item.Tarjeta ? 'Sí' : 'No' }}</td>
+          <td class="px-6 py-4 font-semibold text-green-600">${{ item.Total }}</td>
+          <td class="px-6 py-4 flex justify-center space-x-2">
+            <button (click)="abrirEditar(i)"
+                    class="px-3 py-1 text-white bg-green-600 hover:bg-green-400 rounded text-xs font-medium">
+              Editar
+            </button>
+            <button (click)="eliminarRegistro(i)"
+                    class="px-3 py-1 text-white bg-red-600 hover:bg-red-700 rounded text-xs font-medium">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="compras.length === 0">
+          <td colspan="7" class="px-6 py-4 text-center text-gray-400">No hay compras registradas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

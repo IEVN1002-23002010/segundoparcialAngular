@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
-import { IAlumno } from '../alumnos';
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { IAlumno } from '../alumnos';
 
 @Component({
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   selector: 'app-lista-alumnos',
-  styleUrl: './lista-alumnos.css',
   templateUrl: './lista-alumnos.html',
 })
 export class ListaAlumnos implements OnInit{
@@ -80,7 +78,7 @@ export class ListaAlumnos implements OnInit{
     const datos = localStorage.getItem('alumnos');
 
     if (datos) {
-      this.alumnos = JSON.parse(datos)
+      this.alumnos = JSON.parse(datos);
     }
   }
 
@@ -117,6 +115,12 @@ export class ListaAlumnos implements OnInit{
       Correo: '',
       Materia: ''
     }
-    this.indiceEdicion=-1
+    this.formulario.patchValue({
+      Matricula: this.nuevoAlumno.Matricula,
+      Nombre: this.nuevoAlumno.Nombre,
+      Correo: this.nuevoAlumno.Correo,
+      Materia: this.nuevoAlumno.Materia
+    })
+    this.indiceEdicion=-1;
   }
 }
