@@ -1,0 +1,44 @@
+<div class="min-h-screen flex justify-center items-center bg-gray-50 p-4">
+  <div class="bg-white block max-w-sm w-full p-6 border border-gray-200 rounded-lg shadow-md">
+   
+    <div>
+      <img class="rounded-lg w-full h-auto object-cover mb-4" src="/img/user.avif" alt="User" />
+    </div>
+   
+    <div>
+      <h5 class="mt-2 mb-2 text-2xl font-semibold tracking-tight text-gray-900">
+        Matrícula: {{regAlumno.matricula}}
+      </h5>
+    </div>
+   
+    <p class="mb-2 text-gray-700">
+        <strong>Nombre:</strong> {{regAlumno.nombre}} {{regAlumno.apaterno}}
+    </p>
+    <p class="mb-2 text-gray-700">
+        <strong>Amaterno:</strong> {{regAlumno.amaterno}}
+    </p>
+    <p class="mb-4 text-gray-700">
+        <strong>Correo:</strong> {{regAlumno.correo}}
+    </p>
+   
+    <div class="flex space-x-3 mt-4">
+      <!-- Botón para confirmar eliminación -->
+      <button
+        type="button"
+        (click)="eliminarAlumno()"
+        class="inline-flex items-center text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none transition-colors shadow"
+      >
+        Eliminar
+      </button>
+
+      <!-- Botón Cancelar con routerLink para regresar -->
+      <a
+        routerLink="/utl/alumnos"
+        class="inline-flex items-center text-gray-700 bg-gray-200 hover:bg-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none transition-colors"
+      >
+        Cancelar
+      </a>
+    </div>
+ 
+  </div>
+</div>
